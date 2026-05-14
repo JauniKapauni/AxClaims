@@ -3,6 +3,7 @@ package de.jaunikapauni.axclaims;
 import de.jaunikapauni.axclaims.command.ClaimCommand;
 import de.jaunikapauni.axclaims.listener.BlockBreakListener;
 import de.jaunikapauni.axclaims.listener.BlockPlaceListener;
+import de.jaunikapauni.axclaims.listener.PVPListener;
 import de.jaunikapauni.axclaims.manager.Claim;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,6 +22,7 @@ public final class AxClaims extends JavaPlugin {
         getCommand("claim").setExecutor(new ClaimCommand(this));
         getServer().getPluginManager().registerEvents(new BlockBreakListener(this), this);
         getServer().getPluginManager().registerEvents(new BlockPlaceListener(this), this);
+        getServer().getPluginManager().registerEvents(new PVPListener(this), this);
     }
 
     @Override
