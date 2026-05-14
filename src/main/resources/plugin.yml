@@ -14,3 +14,6 @@ commands:
   claim:
     usage: /claim <radius>
     description: Create a Claim
+  menu:
+    usage: /menu
+    description: Opens the menu
