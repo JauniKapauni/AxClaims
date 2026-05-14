@@ -12,6 +12,7 @@ public class Claim {
     int radius;
 
     public Claim(int id, UUID owner, int centerX, int centerZ, int radius){
+        this.id = id;
         this.owner = owner;
         this.centerX = centerX;
         this.centerZ = centerZ;

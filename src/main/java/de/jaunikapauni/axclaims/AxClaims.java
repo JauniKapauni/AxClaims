@@ -6,10 +6,12 @@ import de.jaunikapauni.axclaims.listener.*;
 import de.jaunikapauni.axclaims.manager.Claim;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -30,7 +32,7 @@ public final class AxClaims extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BlockPlaceListener(this), this);
         getServer().getPluginManager().registerEvents(new PVPListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerMoveListener(this), this);
-        getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
+        getServer().getPluginManager().registerEvents(new InventoryClickListener(this), this);
     }
 
     @Override
@@ -74,8 +76,32 @@ public final class AxClaims extends JavaPlugin {
         ItemStack ownerInfo = new ItemStack(Material.PLAYER_HEAD);
         ItemMeta meta = ownerInfo.getItemMeta();
         meta.setDisplayName("Owner: " + Bukkit.getOfflinePlayer(claim.getOwner()).getName());
+
+        NamespacedKey key = new NamespacedKey(this, "claim_id");
+        meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, claim.getId());
+
         ownerInfo.setItemMeta(meta);
         gui.setItem(0, ownerInfo);
+
+        if(claim.getOwner().equals(p.getUniqueId())){
+            ItemStack deleteItem = new ItemStack(Material.BARRIER);
+            ItemMeta meta1 = deleteItem.getItemMeta();
+            meta1.setDisplayName("Delete claim");
+            deleteItem.setItemMeta(meta1);
+            gui.setItem(8, deleteItem);
+        }
         p.openInventory(gui);
+    }
+
+    public void removeClaim(int id){
+        for(int i = 0; i < allClaims.size(); i++){
+            Claim c = allClaims.get(i);
+            if(c.getId() == id){
+                allClaims.remove(i);
+                getConfig().set("claims." + id, null);
+                saveConfig();
+                break;
+            }
+        }
     }
 }
