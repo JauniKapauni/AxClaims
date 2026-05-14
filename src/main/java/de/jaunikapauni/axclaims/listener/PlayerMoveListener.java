@@ -55,14 +55,14 @@ public class PlayerMoveListener implements Listener {
                         for (int a = minX; a <= maxX; a++) {
                             p.getWorld().spawnParticle(Particle.FLAME, a, p.getLocation().getY() + 2, minZ, 1, 0, 0, 0, 0);
                         }
-                        for (int b = minX; b <= maxX; b++) {
-                            p.getWorld().spawnParticle(Particle.FLAME, b, p.getLocation().getY() + 2, maxZ, 1, 0, 0, 0, 0);
+                        for (int b = minX; b <= maxX + 1; b++) {
+                            p.getWorld().spawnParticle(Particle.FLAME, b, p.getLocation().getY() + 2, maxZ + 1, 1, 0, 0, 0, 0);
                         }
                         for (int c = minZ; c <= maxZ; c++) {
                             p.getWorld().spawnParticle(Particle.FLAME, minX, p.getLocation().getY() + 2, c, 1, 0, 0, 0, 0);
                         }
-                        for (int d = minZ; d <= maxZ; d++) {
-                            p.getWorld().spawnParticle(Particle.FLAME, maxX, p.getLocation().getY() + 2, d, 1, 0, 0, 0, 0);
+                        for (int d = minZ; d <= maxZ + 1; d++) {
+                            p.getWorld().spawnParticle(Particle.FLAME, maxX + 1, p.getLocation().getY() + 2, d, 1, 0, 0, 0, 0);
                         }
                     }
                 }.runTaskTimer(reference, 0, 20));
