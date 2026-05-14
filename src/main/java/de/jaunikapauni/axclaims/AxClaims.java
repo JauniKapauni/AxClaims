@@ -41,7 +41,7 @@ public final class AxClaims extends JavaPlugin {
             int z = getConfig().getInt(path + "centerZ");
             int radius = getConfig().getInt(path + "radius");
 
-            Claim claim = new Claim(owner, x, z, radius);
+            Claim claim = new Claim(Integer.parseInt(id), owner, x, z, radius);
             allClaims.add(claim);
         }
         getLogger().info(allClaims.size() + " all claims were loaded!");

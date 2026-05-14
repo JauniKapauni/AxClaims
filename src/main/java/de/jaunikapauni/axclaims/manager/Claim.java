@@ -5,12 +5,13 @@ import org.bukkit.Location;
 import java.util.UUID;
 
 public class Claim {
+    int id;
     UUID owner;
     int centerX;
     int centerZ;
     int radius;
 
-    public Claim(UUID owner, int centerX, int centerZ, int radius){
+    public Claim(int id, UUID owner, int centerX, int centerZ, int radius){
         this.owner = owner;
         this.centerX = centerX;
         this.centerZ = centerZ;
@@ -29,6 +30,10 @@ public class Claim {
         int distanceZ = Math.abs(this.centerZ - otherZ);
 
         return distanceX <= (this.radius + otherRadius) && distanceZ <= (this.radius + otherRadius);
+    }
+
+    public int getId(){
+        return id;
     }
 
     public UUID getOwner(){

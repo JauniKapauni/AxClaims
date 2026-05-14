@@ -34,7 +34,7 @@ public class PlayerMoveListener implements Listener {
             }
         }
         if(currentClaim != null){
-            if(previousClaim == null || currentClaim != previousClaim){
+            if(previousClaim == null || currentClaim.getId() != previousClaim.getId()){
                 String ownerName = Bukkit.getOfflinePlayer(currentClaim.getOwner()).getName();
                 p.sendActionBar(ChatColor.GREEN + "Region of " + ownerName);
             }

@@ -39,7 +39,7 @@ public class ClaimCommand implements CommandExecutor {
             }
         }
         int id = reference.getNextId();
-        Claim newClaim = new Claim(p.getUniqueId(), loc.getBlockX(), loc.getBlockZ(), radius);
+        Claim newClaim = new Claim(id, p.getUniqueId(), loc.getBlockX(), loc.getBlockZ(), radius);
         reference.getAllClaims().add(newClaim);
         saveToConfig(id, newClaim);
         p.sendMessage("Claim " + "#" + id + " was successfully created!");
