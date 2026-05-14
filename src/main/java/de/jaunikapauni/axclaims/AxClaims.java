@@ -7,13 +7,13 @@ import de.jaunikapauni.axclaims.listener.PVPListener;
 import de.jaunikapauni.axclaims.listener.PlayerMoveListener;
 import de.jaunikapauni.axclaims.manager.Claim;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public final class AxClaims extends JavaPlugin {
     List<Claim> allClaims = new ArrayList<>();
+    Map<UUID, BukkitTask> activeParticles = new HashMap<>();
 
     @Override
     public void onEnable() {
@@ -56,5 +56,9 @@ public final class AxClaims extends JavaPlugin {
 
     public List<Claim> getAllClaims(){
         return allClaims;
+    }
+
+    public Map<UUID, BukkitTask> getActiveParticles(){
+        return activeParticles;
     }
 }
