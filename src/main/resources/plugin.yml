@@ -1,0 +1,11 @@
+name: AxClaims
+description: $description
+prefix: AxClaims
+version: '${version}'
+
+main: de.jaunikapauni.axclaims.AxClaims
+api-version: '26.1.2'
+load: POSTWORLD
+
+authors: [ JauniKapauni ]
+website: https://github.com/JauniKapauni
