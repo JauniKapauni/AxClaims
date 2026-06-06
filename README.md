@@ -1,6 +1,9 @@
 # AxClaims
 > Minecraft plugin that allows players to claim regions of a world
 ---
+## Requirements
+- Minecraft Paper 26.1.2 Server
+---
 ## Features
 - Player can create region
 - Player can remove region
@@ -14,7 +17,7 @@
 ---
 ## Installation
 1. Download the latest release
-2. Put the `.jar` into the `/plugins` folder of every server to be synchronized
+2. Put the `.jar` into the `/plugins` folder
 3. Start the server
 ---
 ## Support
