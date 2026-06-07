@@ -44,7 +44,7 @@ public class PlayerMoveListener implements Listener {
                 if (task != null) {
                     task.cancel();
                 }
-                p.sendActionBar(ChatColor.GREEN + "Region of " + ownerName);
+                p.sendActionBar(ChatColor.GREEN + "Entering claim of " + ownerName);
                 int minX = currentClaim.getCenterX() - currentClaim.getRadius();
                 int minZ = currentClaim.getCenterZ() - currentClaim.getRadius();
                 int maxX = currentClaim.getCenterX() + currentClaim.getRadius();
@@ -75,7 +75,7 @@ public class PlayerMoveListener implements Listener {
             if (task != null) {
                 task.cancel();
             }
-            p.sendActionBar(ChatColor.RED + "Region of " + ownerName);
+            p.sendActionBar(ChatColor.RED + "Leaving claim of " + ownerName);
         }
     }
 }
