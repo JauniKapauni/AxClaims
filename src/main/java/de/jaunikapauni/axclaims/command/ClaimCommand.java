@@ -21,6 +21,10 @@ public class ClaimCommand implements CommandExecutor {
             return true;
         }
         Player p = (Player) sender;
+        if(!p.hasPermission("axclaims.claim")){
+            p.sendMessage("You don't have the permission [axclaims.claim]");
+            return true;
+        }
         if(args.length != 1){
             return false;
         }
