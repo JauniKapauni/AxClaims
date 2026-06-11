@@ -20,6 +20,9 @@
 2. Put the `.jar` into the `/plugins` folder
 3. Start the server
 ---
+## Commands & Permissions
+- `/claim` - `axclaims.claim`
+- `/menu` - `axclaims.menu`
 ## Support
 Discord: [AxForge](https://discord.gg/rYSxV4daS8)
 ---
