@@ -20,6 +20,10 @@ public class MenuCommand implements CommandExecutor {
             return true;
         }
         Player p = (Player) sender;
+        if(!p.hasPermission("axclaims.menu")){
+            p.sendMessage("You don't have the permission! [axclaims.menu]");
+            return true;
+        }
         Claim currentClaim = null;
         for(Claim claim : reference.getAllClaims()){
             if(claim.isInside(p.getLocation())){
