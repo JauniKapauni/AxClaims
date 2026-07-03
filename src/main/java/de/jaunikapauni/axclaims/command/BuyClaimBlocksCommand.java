@@ -37,6 +37,7 @@ public class BuyClaimBlocksCommand implements CommandExecutor {
         int cost = claimBlocks * 20;
         if(reference.getEconomyAPI().has(p.getUniqueId(), cost)){
             reference.getEconomyAPI().withdraw(p.getUniqueId(), cost);
+            reference.addClaimBlocks(p.getUniqueId(), claimBlocks);
             p.sendMessage(ChatColor.GREEN + "You bought " + claimBlocks + " claim blocks for " + cost);
         } else {
             p.sendMessage(ChatColor.RED + "You don't have enough money!");

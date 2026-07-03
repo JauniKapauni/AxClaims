@@ -10,6 +10,8 @@ import de.jaunikapauni.axeconomy.api.EconomyAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -18,6 +20,8 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public final class AxClaims extends JavaPlugin {
@@ -27,6 +31,8 @@ public final class AxClaims extends JavaPlugin {
     public EconomyAPI getEconomyAPI(){
         return economyAPI;
     }
+    File claimBlocksFile;
+    FileConfiguration claimBlocksConfig;
 
     @Override
     public void onEnable() {
@@ -55,6 +61,13 @@ public final class AxClaims extends JavaPlugin {
             economyAPI = axEconomy.getEconomyAPI();
         }
         getCommand("buyclaimblocks").setExecutor(new BuyClaimBlocksCommand(this));
+        claimBlocksFile = new File(getDataFolder(), "claimblocks.yml");
+        if(!claimBlocksFile.exists()){
+            claimBlocksFile.getParentFile().mkdirs();
+            saveResource("claimblocks.yml", false);
+        }
+        claimBlocksConfig = YamlConfiguration.loadConfiguration(claimBlocksFile);
+
     }
 
     @Override
@@ -124,6 +137,27 @@ public final class AxClaims extends JavaPlugin {
                 saveConfig();
                 break;
             }
+        }
+    }
+    public int getClaimBlocks(UUID uuid){
+        return claimBlocksConfig.getInt("players." + uuid, 0);
+    }
+
+    public void addClaimBlocks(UUID uuid, int amount){
+        claimBlocksConfig.set("players." + uuid, getClaimBlocks(uuid) + amount);
+        saveClaimBlocks();
+    }
+
+    public void removeClaimBlocks(UUID uuid, int amount){
+        claimBlocksConfig.set("players." + uuid, getClaimBlocks(uuid) - amount);
+        saveClaimBlocks();
+    }
+
+    public void saveClaimBlocks(){
+        try{
+            claimBlocksConfig.save(claimBlocksFile);
+        } catch (IOException e){
+            e.printStackTrace();
         }
     }
 }
