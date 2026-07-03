@@ -10,6 +10,9 @@ load: POSTWORLD
 authors: [ JauniKapauni ]
 website: https://github.com/JauniKapauni
 
+depend:
+  - AxEconomy
+
 commands:
   claim:
     usage: /claim <radius>
@@ -17,3 +20,6 @@ commands:
   menu:
     usage: /menu
     description: Opens the menu
+  buyclaimblocks:
+    usage: /buyclaimblocks <amount>
+    description: Buy amount of claim blocks

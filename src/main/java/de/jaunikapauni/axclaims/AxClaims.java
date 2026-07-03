@@ -1,9 +1,12 @@
 package de.jaunikapauni.axclaims;
 
+import de.jaunikapauni.axclaims.command.BuyClaimBlocksCommand;
 import de.jaunikapauni.axclaims.command.ClaimCommand;
 import de.jaunikapauni.axclaims.command.MenuCommand;
 import de.jaunikapauni.axclaims.listener.*;
 import de.jaunikapauni.axclaims.manager.Claim;
+import de.jaunikapauni.axeconomy.AxEconomy;
+import de.jaunikapauni.axeconomy.api.EconomyAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -20,6 +23,10 @@ import java.util.*;
 public final class AxClaims extends JavaPlugin {
     List<Claim> allClaims = new ArrayList<>();
     Map<UUID, BukkitTask> activeParticles = new HashMap<>();
+    EconomyAPI economyAPI;
+    public EconomyAPI getEconomyAPI(){
+        return economyAPI;
+    }
 
     @Override
     public void onEnable() {
@@ -40,6 +47,14 @@ public final class AxClaims extends JavaPlugin {
         getLogger().info(String.join("Authors: " + ", ", getDescription().getAuthors()));
         getLogger().info("----------------------------------------");
         getLogger().info("");
+        if(Bukkit.getPluginManager().getPlugin("AxEconomy") != null){
+            AxEconomy axEconomy = (AxEconomy) Bukkit.getPluginManager().getPlugin("AxEconomy");
+            if(axEconomy == null){
+                throw new IllegalStateException("AxEconomy is missing!");
+            }
+            economyAPI = axEconomy.getEconomyAPI();
+        }
+        getCommand("buyclaimblocks").setExecutor(new BuyClaimBlocksCommand(this));
     }
 
     @Override

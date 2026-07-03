@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
+    compileOnly(files("libs/AxEconomy-1.3.7-all.jar"))
 }
 
 java {
