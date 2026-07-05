@@ -70,6 +70,7 @@ public final class AxClaims extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerInteractListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerBucketEmptyListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerBucketFillListener(this), this);
+        getServer().getPluginManager().registerEvents(new BlockFromToListener(this), this);
     }
 
     @Override
