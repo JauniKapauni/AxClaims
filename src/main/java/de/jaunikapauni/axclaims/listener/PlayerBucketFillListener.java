@@ -24,7 +24,7 @@ public class PlayerBucketFillListener implements Listener {
             if (!claim.isInside(loc)) {
                 continue;
             }
-            if(claim.getOwner().equals(p.getUniqueId())){
+            if(claim.isTrusted(p.getUniqueId())){
                 return;
             }
             e.setCancelled(true);

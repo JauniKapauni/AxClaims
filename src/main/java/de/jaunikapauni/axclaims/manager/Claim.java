@@ -2,6 +2,8 @@ package de.jaunikapauni.axclaims.manager;
 
 import org.bukkit.Location;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 public class Claim {
@@ -10,6 +12,23 @@ public class Claim {
     int centerX;
     int centerZ;
     int radius;
+    Set<UUID> trusted = new HashSet<>();
+
+    public boolean isTrusted(UUID uuid){
+        return owner.equals(uuid) || trusted.contains(uuid);
+    }
+
+    public void addTrusted(UUID uuid){
+        trusted.add(uuid);
+    }
+
+    public void removeTrusted(UUID uuid){
+        trusted.remove(uuid);
+    }
+
+    public Set<UUID> getTrusted(){
+        return trusted;
+    }
 
     public Claim(int id, UUID owner, int centerX, int centerZ, int radius){
         this.id = id;

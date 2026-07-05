@@ -1,8 +1,6 @@
 package de.jaunikapauni.axclaims;
 
-import de.jaunikapauni.axclaims.command.BuyClaimBlocksCommand;
-import de.jaunikapauni.axclaims.command.ClaimCommand;
-import de.jaunikapauni.axclaims.command.MenuCommand;
+import de.jaunikapauni.axclaims.command.*;
 import de.jaunikapauni.axclaims.listener.*;
 import de.jaunikapauni.axclaims.manager.Claim;
 import de.jaunikapauni.axeconomy.AxEconomy;
@@ -79,6 +77,9 @@ public final class AxClaims extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BlockBurnListener(this), this);
         getServer().getPluginManager().registerEvents(new BlockIgniteListener(this), this);
         getServer().getPluginManager().registerEvents(new EntityChangeBlockListener(this), this);
+        getCommand("trust").setExecutor(new TrustCommand(this));
+        getCommand("untrust").setExecutor(new UnTrustCommand(this));
+        getCommand("trustlist").setExecutor(new TrustListCommand(this));
     }
 
     @Override
@@ -94,8 +95,12 @@ public final class AxClaims extends JavaPlugin {
             int x = getConfig().getInt(path + "centerX");
             int z = getConfig().getInt(path + "centerZ");
             int radius = getConfig().getInt(path + "radius");
+            List<String> trustedList = getConfig().getStringList(path + "trusted");
 
             Claim claim = new Claim(Integer.parseInt(id), owner, x, z, radius);
+            for(String uuid : trustedList){
+                claim.addTrusted(UUID.fromString(uuid));
+            }
             allClaims.add(claim);
         }
         getLogger().info(allClaims.size() + " all claims were loaded!");
@@ -129,7 +134,7 @@ public final class AxClaims extends JavaPlugin {
         ownerInfo.setItemMeta(meta);
         gui.setItem(0, ownerInfo);
 
-        if(claim.getOwner().equals(p.getUniqueId())){
+        if(claim.isTrusted(p.getUniqueId())){
             ItemStack deleteItem = new ItemStack(Material.BARRIER);
             ItemMeta meta1 = deleteItem.getItemMeta();
             meta1.setDisplayName("Delete claim");

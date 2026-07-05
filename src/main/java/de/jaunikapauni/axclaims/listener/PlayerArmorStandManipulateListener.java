@@ -23,7 +23,7 @@ public class PlayerArmorStandManipulateListener implements Listener {
             if(!c.isInside(loc)){
                 continue;
             }
-            if(c.getOwner().equals(p.getUniqueId())){
+            if(c.isTrusted(p.getUniqueId())){
                 return;
             }
             e.setCancelled(true);

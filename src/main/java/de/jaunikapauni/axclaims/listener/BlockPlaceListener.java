@@ -21,7 +21,7 @@ public class BlockPlaceListener implements Listener {
 
         for(Claim claim : reference.getAllClaims()){
             if(claim.isInside(loc)){
-                if(!claim.getOwner().equals(p.getUniqueId())){
+                if(!claim.isTrusted(p.getUniqueId())){
                     e.setCancelled(true);
                     p.sendMessage("This region doesn't belong to you!");
                     return;
