@@ -15,7 +15,13 @@ public class PVPListener implements Listener {
 
     @EventHandler
     public void onPVP(EntityDamageByEntityEvent e){
+        if(!(e.getDamager() instanceof Player)){
+            return;
+        }
         Player attacker = (Player) e.getDamager();
+        if(!(e.getEntity() instanceof Player)){
+            return;
+        }
         Player victim = (Player) e.getEntity();
 
         for(Claim claim : reference.getAllClaims()){
