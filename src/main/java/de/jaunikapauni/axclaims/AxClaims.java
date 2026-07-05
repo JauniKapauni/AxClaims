@@ -78,6 +78,7 @@ public final class AxClaims extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerArmorStandManipulateListener(this), this);
         getServer().getPluginManager().registerEvents(new BlockBurnListener(this), this);
         getServer().getPluginManager().registerEvents(new BlockIgniteListener(this), this);
+        getServer().getPluginManager().registerEvents(new EntityChangeBlockListener(this), this);
     }
 
     @Override
