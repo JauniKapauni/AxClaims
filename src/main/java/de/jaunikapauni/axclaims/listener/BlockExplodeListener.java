@@ -1,0 +1,32 @@
+package de.jaunikapauni.axclaims.listener;
+
+import de.jaunikapauni.axclaims.AxClaims;
+import de.jaunikapauni.axclaims.manager.Claim;
+import org.bukkit.block.Block;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockExplodeEvent;
+
+import java.util.Iterator;
+
+public class BlockExplodeListener implements Listener {
+
+    AxClaims reference;
+    public BlockExplodeListener(AxClaims reference){
+        this.reference = reference;
+    }
+
+    @EventHandler
+    public void onBlockExplode(BlockExplodeEvent e){
+        Iterator<Block> iterator = e.blockList().iterator();
+        while (iterator.hasNext()){
+            Block block = iterator.next();
+            for(Claim c : reference.getAllClaims()){
+                if(c.isInside(block.getLocation())){
+                    iterator.remove();
+                    break;
+                }
+            }
+        }
+    }
+}
