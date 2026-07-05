@@ -67,7 +67,7 @@ public final class AxClaims extends JavaPlugin {
             saveResource("claimblocks.yml", false);
         }
         claimBlocksConfig = YamlConfiguration.loadConfiguration(claimBlocksFile);
-
+        getServer().getPluginManager().registerEvents(new PlayerInteractListener(this), this);
     }
 
     @Override
