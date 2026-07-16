@@ -26,13 +26,11 @@ public class PlayerMoveListener implements Listener {
             return;
         }
         Claim previousClaim = null;
+        Claim currentClaim = null;
         for (Claim claim : reference.getAllClaims()) {
             if (claim.isInside(e.getFrom())) {
                 previousClaim = claim;
             }
-        }
-        Claim currentClaim = null;
-        for (Claim claim : reference.getAllClaims()) {
             if (claim.isInside(e.getTo())) {
                 currentClaim = claim;
             }
