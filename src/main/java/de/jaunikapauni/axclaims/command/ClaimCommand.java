@@ -41,7 +41,7 @@ public class ClaimCommand implements CommandExecutor {
             return true;
         }
         if(radius < 2){
-            p.sendMessage("Radius must be at least 1.");
+            p.sendMessage("Radius must be at least 2.");
             return true;
         }
         int requiredBlocks = (radius * 2 + 1) * (radius * 2 + 1);
