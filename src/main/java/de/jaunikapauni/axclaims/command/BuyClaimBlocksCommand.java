@@ -34,6 +34,10 @@ public class BuyClaimBlocksCommand implements CommandExecutor {
             p.sendMessage("The amount of claim blocks has to be a number!");
             return true;
         }
+        if(claimBlocks <= 0){
+            p.sendMessage("Claim block amount to be bought has to be bigger then 0.");
+            return true;
+        }
         int cost = claimBlocks * 20;
         if(reference.getEconomyAPI().has(p.getUniqueId(), cost)){
             reference.getEconomyAPI().withdraw(p.getUniqueId(), cost);
