@@ -40,6 +40,10 @@ public class ClaimCommand implements CommandExecutor {
             p.sendMessage("The radius has to be a number!");
             return true;
         }
+        if(radius < 2){
+            p.sendMessage("Radius must be at least 1.");
+            return true;
+        }
         int requiredBlocks = (radius * 2 + 1) * (radius * 2 + 1);
         if(reference.getClaimBlocks(p.getUniqueId()) < requiredBlocks){
             p.sendMessage(ChatColor.RED + "You need " + requiredBlocks + " claim blocks!");
