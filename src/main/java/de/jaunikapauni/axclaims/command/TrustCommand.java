@@ -40,6 +40,10 @@ public class TrustCommand implements CommandExecutor {
             p.sendMessage("Player not found!");
             return true;
         }
+        if(target.getUniqueId().equals(p.getUniqueId())){
+            p.sendMessage("You cannot trust yourself!");
+            return true;
+        }
         Claim c = getClaimAt(p);
         if(c == null){
             p.sendMessage("You are not in a claim");
