@@ -36,7 +36,7 @@ public final class AxClaims extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         saveDefaultConfig();
-        loadCLaims();
+        loadClaims();
         getCommand("claim").setExecutor(new ClaimCommand(this));
         getCommand("menu").setExecutor(new MenuCommand(this));
         getServer().getPluginManager().registerEvents(new BlockBreakListener(this), this);
@@ -88,7 +88,7 @@ public final class AxClaims extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    public void loadCLaims(){
+    public void loadClaims(){
         if(getConfig().getConfigurationSection("claims") == null) return;
         for(String id : getConfig().getConfigurationSection("claims").getKeys(false)){
             String path = "claims." + id + ".";
