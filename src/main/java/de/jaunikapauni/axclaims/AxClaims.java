@@ -77,6 +77,7 @@ public final class AxClaims extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BlockBurnListener(this), this);
         getServer().getPluginManager().registerEvents(new BlockIgniteListener(this), this);
         getServer().getPluginManager().registerEvents(new EntityChangeBlockListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerQuitListener(this), this);
         getCommand("trust").setExecutor(new TrustCommand(this));
         getCommand("untrust").setExecutor(new UnTrustCommand(this));
         getCommand("trustlist").setExecutor(new TrustListCommand(this));
