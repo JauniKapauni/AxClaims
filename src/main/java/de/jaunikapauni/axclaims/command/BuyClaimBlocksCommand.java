@@ -38,7 +38,7 @@ public class BuyClaimBlocksCommand implements CommandExecutor {
             p.sendMessage("Claim block amount to be bought has to be bigger then 0.");
             return true;
         }
-        if(claimBlocks >= 100){
+        if(claimBlocks > 100){
             p.sendMessage("You can only buy a maximum 100 blocks at a time.");
             return true;
         }
