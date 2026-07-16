@@ -36,7 +36,7 @@ public class UnTrustCommand implements CommandExecutor {
             return false;
         }
         OfflinePlayer target = Bukkit.getOfflinePlayer(args[0]);
-        if(target == null){
+        if(target.getUniqueId() == null){
             p.sendMessage("Player not found!");
             return true;
         }
