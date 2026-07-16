@@ -15,7 +15,7 @@ public class PlayerQuitListener implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e){
-        BukkitTask task = reference.getActiveParticles().remove(p.getUniqueId());
+        BukkitTask task = reference.getActiveParticles().remove(e.getPlayer().getUniqueId());
         if(task != null){
             task.cancel();
         }
