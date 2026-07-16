@@ -134,7 +134,7 @@ public final class AxClaims extends JavaPlugin {
         ownerInfo.setItemMeta(meta);
         gui.setItem(0, ownerInfo);
 
-        if(claim.isTrusted(p.getUniqueId())){
+        if(claim.getOwner().equals(p.getUniqueId())){
             ItemStack deleteItem = new ItemStack(Material.BARRIER);
             ItemMeta meta1 = deleteItem.getItemMeta();
             meta1.setDisplayName("Delete claim");
