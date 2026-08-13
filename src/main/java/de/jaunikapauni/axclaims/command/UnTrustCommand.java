@@ -28,6 +28,10 @@ public class UnTrustCommand implements CommandExecutor {
             return false;
         }
         Player p = (Player) sender;
+        if(reference.isWorldDisabled(p.getWorld().getName())){
+            p.sendMessage("Claims are disabled in this world!");
+            return true;
+        }
         if(!p.hasPermission("axclaims.untrust")){
             p.sendMessage(ChatColor.RED + "You don't have the permission [axclaims.untrust]");
             return true;

@@ -26,6 +26,10 @@ public class ClaimCommand implements CommandExecutor {
             return true;
         }
         Player p = (Player) sender;
+        if(reference.isWorldDisabled(p.getWorld().getName())){
+            p.sendMessage("Claims are disabled in this world!");
+            return true;
+        }
         if(!p.hasPermission("axclaims.claim")){
             p.sendMessage("You don't have the permission [axclaims.claim]");
             return true;

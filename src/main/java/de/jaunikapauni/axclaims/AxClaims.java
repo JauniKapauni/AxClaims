@@ -177,4 +177,8 @@ public final class AxClaims extends JavaPlugin {
             e.printStackTrace();
         }
     }
+
+    public boolean isWorldDisabled(String worldName){
+        return getConfig().getStringList("disabled-worlds").contains(worldName);
+    }
 }

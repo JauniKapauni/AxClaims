@@ -20,6 +20,10 @@ public class MenuCommand implements CommandExecutor {
             return true;
         }
         Player p = (Player) sender;
+        if(reference.isWorldDisabled(p.getWorld().getName())){
+            p.sendMessage("Claims are disabled in this world!");
+            return true;
+        }
         if(!p.hasPermission("axclaims.menu")){
             p.sendMessage("You don't have the permission! [axclaims.menu]");
             return true;

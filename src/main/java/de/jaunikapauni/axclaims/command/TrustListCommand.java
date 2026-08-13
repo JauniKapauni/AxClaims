@@ -26,6 +26,10 @@ public class TrustListCommand implements CommandExecutor {
             return true;
         }
         Player p = (Player) sender;
+        if(reference.isWorldDisabled(p.getWorld().getName())){
+            p.sendMessage("Claims are disabled in this world!");
+            return true;
+        }
         if(!p.hasPermission("axclaims.trustlist")){
             p.sendMessage(ChatColor.RED + "You don't have the permission [axclaims.trustlist]");
             return true;
