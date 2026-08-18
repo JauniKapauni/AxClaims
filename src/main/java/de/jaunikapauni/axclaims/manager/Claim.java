@@ -71,4 +71,12 @@ public class Claim {
     public int getRadius(){
         return radius;
     }
+
+    public void setCenterX(int centerX){
+        this.centerX = centerX;
+    }
+
+    public void setCenterZ(int centerZ){
+        this.centerZ = centerZ;
+    }
 }

@@ -82,6 +82,7 @@ public final class AxClaims extends JavaPlugin {
         getCommand("untrust").setExecutor(new UnTrustCommand(this));
         getCommand("trustlist").setExecutor(new TrustListCommand(this));
         getServer().getPluginManager().registerEvents(new EntityDamageListener(this), this);
+        getCommand("recenter").setExecutor(new RecenterCommand(this));
     }
 
     @Override

@@ -26,3 +26,4 @@ commands:
   trust:
   untrust:
   trustlist:
+  recenter:
