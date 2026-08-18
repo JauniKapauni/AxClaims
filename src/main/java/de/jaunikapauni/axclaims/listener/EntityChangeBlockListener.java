@@ -4,6 +4,7 @@ import de.jaunikapauni.axclaims.AxClaims;
 import de.jaunikapauni.axclaims.manager.Claim;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.entity.FallingBlock;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
@@ -22,6 +23,9 @@ public class EntityChangeBlockListener implements Listener {
         for(Claim c : reference.getAllClaims()){
             if(!c.isInside(loc)){
                 continue;
+            }
+            if(e.getEntity() instanceof FallingBlock){
+                return;
             }
             e.setCancelled(true);
             return;
